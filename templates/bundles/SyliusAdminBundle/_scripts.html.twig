@@ -1,0 +1,7 @@
+{{ encore_entry_script_tags('admin-entry', null, 'admin') }}
+{{ encore_entry_script_tags('app-admin-entry', null, 'app.admin') }}
+{{ encore_entry_script_tags('bitbag-cms-admin', null, 'cms_admin') }}
+
+<script>
+    const route = "{{ path('bitbag_sylius_cms_plugin_admin_ajax_media_by_name_phrase')|escape('js') }}";
+</script>

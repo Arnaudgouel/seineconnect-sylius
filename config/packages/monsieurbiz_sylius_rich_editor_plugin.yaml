@@ -1,0 +1,8 @@
+imports:
+    - { resource: "@MonsieurBizSyliusRichEditorPlugin/Resources/config/config.yaml" }
+
+monsieurbiz_sylius_richeditor:
+    ui_elements:
+        monsieurbiz.text:
+            classes:
+                form: App\Form\Extension\MonsieurBizRichEditorPlugin\TextTypeExtension

@@ -1,0 +1,17 @@
+{
+  "license": "MIT",
+  "scripts": {
+    "build": "encore dev",
+    "build:prod": "encore production",
+    "postinstall": "semantic-ui-css-patch",
+    "lint": "yarn lint:js",
+    "watch": "encore dev --watch"
+  },
+  "devDependencies": {
+    "@sylius-ui/frontend": "^1.0"
+  },
+  "dependencies": {
+    "ckeditor4": "4.22.1",
+    "file-loader": "^6.2.0"
+  }
+}

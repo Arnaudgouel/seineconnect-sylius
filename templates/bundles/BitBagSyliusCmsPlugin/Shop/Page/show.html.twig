@@ -1,0 +1,73 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% set published = (page.publishAt is not null and page.publishAt|date("Y-m-d H:i:s") < "now"|date("Y-m-d H:i:s") or page.publishAt is null) %}
+
+{%- block title -%}
+    {% if page.title is not empty and published == true  %}
+        {{ page.title }}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{%- endblock -%}
+
+{% block metatags %}
+    {% if published == true %}
+        {% if page.metaKeywords is not empty %}
+            <meta name="keywords" content="{{ page.metaKeywords }}"/>
+        {% endif %}
+        {% if page.metaDescription is not empty %}
+            <meta name="description" content="{{ page.metaDescription }}"/>
+        {% endif %}
+    {% endif %}
+{% endblock %}
+{% block content %}
+    {% if published == true %}
+        <div class="ui breadcrumb">
+            <a href="{{ path('sylius_shop_homepage') }}" class="section">{{ 'sylius.ui.home'|trans }}</a>
+            <div class="divider"> /</div>
+            <div class="active section">{{ page.breadcrumb }}</div>
+            {% if app.session.has('_security_admin') %}
+                <a href="{{ path('bitbag_sylius_cms_plugin_admin_page_update', {'id': page.id}) }}" class="ui button" style="position: absolute; right: 0">
+                    <svg fill="#000000" height="15px" width="15px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                         viewBox="0 0 31.982 31.982" xml:space="preserve">
+                        <g>
+                            <path d="M3.952,23.15L0,31.955l8.767-3.992l0.018,0.019L3.938,23.13L3.952,23.15z M4.602,22.463L24.634,2.432l4.849,4.848
+                                L9.45,27.312L4.602,22.463z M30.883,0.941c-2.104-1.963-4.488-0.156-4.488-0.156l4.851,4.843
+                                C31.244,5.627,33.124,3.375,30.883,0.941z"/>
+                        </g>
+                    </svg>
+                </a>
+            {% endif %}
+        </div>
+        <div class="ui segment">
+            <h1 class="ui dividing header bitbag-page-name">{{ page.name }}</h1>
+
+            <div class="ui grid center aligned">
+                <div class="eight wide column">
+                    {% if page.image %}
+                        <img class="page-image ui fluid image" src="{{ page.image.path }}" alt="">
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="ui hidden divider"></div>
+
+            <div class="bitbag-page-content">{{ page.content | monsieurbiz_richeditor_render_field  }}</div>
+            <div class="ui dividing header"></div>
+            <div class="bitbag-page-sections">
+                {% include '@BitBagSyliusCmsPlugin/Shop/Page/Show/_sections.html.twig' %}
+            </div>
+        </div>
+        {% if page.products|length > 0 %}
+            <h2>
+                {{ 'bitbag_sylius_cms_plugin.ui.page_related_products'|trans }}
+            </h2>
+            <div class="bitbag-page-products">
+                {% include '@SyliusShop/Product/_horizontalList.html.twig' with {'products': page.products} %}
+            </div>
+        {% endif %}
+    {% else %}
+        {% include '@BitBagSyliusCmsPlugin/Shop/Page/Error/_notPublished.html.twig' with {'publishAt': page.publishAt} %}
+    {% endif %}
+
+{% endblock %}

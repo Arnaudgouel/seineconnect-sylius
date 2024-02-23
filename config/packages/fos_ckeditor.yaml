@@ -1,0 +1,46 @@
+# Read the documentation: https://symfony.com/doc/current/bundles/FOSCKEditorBundle/index.html
+            
+fos_ck_editor:
+    base_path: "build/admin/ckeditor"
+    js_path: "build/admin/ckeditor/ckeditor.js"
+    input_sync: true
+    default_config: bitbag_sylius_cms_plugin
+    configs:
+        bitbag_sylius_cms_plugin:
+            toolbar: "haulotte_toolbar"
+            enterMode: 3
+            forcePasteAsPlainText: 'allow-word'
+            allowedContent: true
+            clipboard_handleImages: false
+            extraPlugins:
+                - 'mediaVideo'
+                - 'mediaImage'
+                - 'justify'
+            removePlugins:
+                - "exportpdf"
+            format_tags: "p;h1;h2;h3;h4;h5;pre"
+            stylesSet: "my_styles"
+    styles:
+        my_styles:
+            - { name: "Blue Title", element: "h2", styles: { color: "Blue" } }
+            - { name: "CSS Style", element: "span", attributes: { class: "my_style" } }
+            - { name: "Widget Style", type: widget, widget: "my_widget", attributes: { class: "my_widget_style" } }
+    plugins:
+        mediaVideo:
+            path: '/bundles/bitbagsyliuscmsplugin/js/ckeditor-plugins/video/'
+            filename: 'plugin.js'
+        mediaImage:
+            path: '/bundles/bitbagsyliuscmsplugin/js/ckeditor-plugins/image/'
+            filename: 'plugin.js'
+    toolbars:
+        configs:
+            haulotte_toolbar:
+                - '@document'
+                - '/'
+                - '@editing'
+                - '/'
+                - '@styles'
+        items:
+            document: [ "Source", "-", "Cut", "Copy", "Paste", "PasteText", "PasteFromWord", "-", "Undo", "Redo", "-", "Scayt" ]
+            editing: [ 'Bold', 'Italic', 'Strike', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'RemoveFormat', '-', 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-', 'Link', 'Unlink', 'Anchor', '-', 'Table', 'HorizontalRule', 'SpecialChar' ]
+            styles: [ 'Styles', 'Format', 'Maximize', '-', 'About' ]
