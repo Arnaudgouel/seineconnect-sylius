@@ -111,6 +111,7 @@ COPY --from=base /srv/sylius/assets ./assets
 COPY webpack.config.js ./
 COPY tailwind.config.js ./
 COPY postcss.config.js ./
+COPY config/theme.json ./config/
 RUN yarn build:prod
 
 COPY docker/node/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
