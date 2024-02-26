@@ -15,7 +15,8 @@ Encore
   .cleanupOutputBeforeBuild()
   .enableSourceMaps(!Encore.isProduction())
   .enableVersioning(Encore.isProduction())
-  .enableSassLoader();
+  .enableSassLoader()
+;
 
 const shopConfig = Encore.getWebpackConfig();
 
@@ -65,6 +66,11 @@ Encore
     .cleanupOutputBeforeBuild()
     .enableSourceMaps(!Encore.isProduction())
     .enableVersioning(Encore.isProduction())
+    .enablePostCssLoader((options) => {
+      options.postcssOptions = {
+        config: './postcss.config.js'
+      }
+    })
     .enableSassLoader();
 
 const appShopConfig = Encore.getWebpackConfig();

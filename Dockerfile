@@ -2,9 +2,9 @@
 # https://docs.docker.com/compose/compose-file/#target
 
 ARG PHP_VERSION=8.1
-ARG NODE_VERSION=16
+ARG NODE_VERSION=20.11.1
 ARG NGINX_VERSION=1.21
-ARG ALPINE_VERSION=3.15
+ARG ALPINE_VERSION=3.19
 ARG COMPOSER_VERSION=2.4
 ARG PHP_EXTENSION_INSTALLER_VERSION=latest
 
@@ -109,6 +109,8 @@ COPY --from=base /srv/sylius/vendor/bitbag/cms-plugin/webpack.config.js vendor/b
 COPY --from=base /srv/sylius/assets ./assets
 
 COPY webpack.config.js ./
+COPY tailwind.config.js ./
+COPY postcss.config.js ./
 RUN yarn build:prod
 
 COPY docker/node/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
