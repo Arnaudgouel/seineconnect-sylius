@@ -1,0 +1,50 @@
+{% macro item(menu) %}
+    {% set noreferrer = menu.noreferrer %}
+    {% set noopener = menu.noopener %}
+    {% set nofollow = menu.nofollow %}
+    {% set hasRel = noreferrer or noopener or nofollow %}
+    <li class="nav-item">
+        <a href="{% if menu.url is empty %}#{% else %}{{ menu.url }}{% endif %}" class="nav-link inline-block lg:block{% if menu.url == app.request.pathInfo %} active{% endif %}" {% if menu.targetBlank %}target="_blank"{% endif %}
+            {% if hasRel %}
+                rel="{% if noreferrer %}noreferrer{% endif %}{% if noopener %} noopener{% endif %}{% if nofollow %} nofollow{% endif %}"
+            {% endif %}
+        >
+            {{ menu.label }}
+        </a>
+    </li>
+{% endmacro %}
+
+{% import _self as macros %}
+{% set menu_items = menu_first_level('main') %}
+{% if menu_items is not empty %}
+    <!-- navbar toggler -->
+    <input id="nav-toggle" type="checkbox" class="hidden" />
+    <label
+        id="show-button"
+        for="nav-toggle"
+        class="order-2 flex cursor-pointer items-center lg:order-1 lg:hidden"
+    >
+        <svg class="h-6 fill-current" viewBox="0 0 20 20">
+            <title>Ouvrir Menu</title>
+            <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
+        </svg>
+    </label>
+    <label
+        id="hide-button"
+        for="nav-toggle"
+        class="order-2 hidden cursor-pointer items-center lg:order-1"
+    >
+        <svg class="h-6 fill-current" viewBox="0 0 20 20">
+            <title>Fermer Menu</title>
+            <polygon
+                points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
+                transform="rotate(45 10 10)"></polygon>
+        </svg>
+    </label>
+    <!-- /navbar toggler -->
+    <ul id="nav-menu" class="navbar-nav order-3 hidden w-full lg:order-1 lg:flex lg:w-auto lg:space-x-2">
+        {% for first_level_item in menu_items %}
+            {{ macros.item(first_level_item) }}
+        {% endfor %}
+    </ul>
+{% endif %}

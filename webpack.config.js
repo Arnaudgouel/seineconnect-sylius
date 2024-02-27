@@ -71,7 +71,14 @@ Encore
         config: './postcss.config.js'
       }
     })
-    .enableSassLoader();
+    .copyFiles([
+      {
+        from: './assets/shop/images',
+        to: 'images/[path][name].[ext]',
+        pattern: /\.(png|jpg|jpeg|svg|ico|gif)$/,
+      }
+    ])
+  .enableSassLoader();
 
 const appShopConfig = Encore.getWebpackConfig();
 

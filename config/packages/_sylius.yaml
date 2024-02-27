@@ -262,6 +262,8 @@ sylius_ui:
                     enabled: false
                 menu:
                     template: '@MonsieurBizSyliusMenuPlugin/Layout/Header/_menu.html.twig'
+                content:
+                    enabled: false
         sylius.shop.layout.header:
             blocks:
                 menu:

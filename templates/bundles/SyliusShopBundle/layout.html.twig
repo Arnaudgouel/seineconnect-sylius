@@ -22,7 +22,7 @@
     {{ sylius_template_event('sylius.shop.layout.head') }}
 </head>
 
-<body class="pushable">
+<body>
 {{ sylius_template_event('sylius.shop.layout.before_body') }}
 <div class="pusher" data-route="{{ app.request.get('_route') }}">
     {% block top %}
@@ -33,7 +33,7 @@
     {% endblock %}
 
         {% block header %}
-            <header class="header">
+            <header class="header header-sticky">
                 <nav class="navbar container">
                     {{ sylius_template_event('sylius.shop.layout.header') }}
                 </nav>
