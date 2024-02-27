@@ -76,7 +76,7 @@ Encore
       {
         from: './assets/shop/images',
         to: 'images/[path][name].[ext]',
-        pattern: /\.(png|jpg|jpeg|svg|ico|gif)$/,
+        pattern: /\.(png|jpg|jpeg|svg|ico|gif|webp)$/,
       }
     ])
   .enableSassLoader();

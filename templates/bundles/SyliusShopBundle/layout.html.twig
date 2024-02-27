@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Merriweather:wght@700;900&amp;display=swap" rel="stylesheet">
 
     {% block metatags %}
     {% endblock %}
@@ -26,10 +27,6 @@
 {{ sylius_template_event('sylius.shop.layout.before_body') }}
 <div class="pusher" data-route="{{ app.request.get('_route') }}">
     {% block top %}
-{#        <div id="menu" class="top-menu">#}
-{#            <a href="#" class="top-menu__link">{{ 'sylius.top_bar'|trans }}</a>#}
-{#            <div class="top-bar">{{ sylius_template_event('sylius.shop.layout.topbar') }}</div>#}
-{#        </div>#}
     {% endblock %}
 
         {% block header %}

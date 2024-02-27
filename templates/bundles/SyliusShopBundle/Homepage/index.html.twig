@@ -1,6 +1,32 @@
 {% extends '@SyliusShop/layout.html.twig' %}
 
 {% block content %}
+    <section class="section banner relative">
+        <div class="container">
+            <div class="row items-center particle-network-animation" data-controller="particules">
+                <div class="lg:col-6 z-10">
+                    <h1 class="banner-title backdrop-blur-sm">Votre Opérateur Local, Créateur d'Internet sur Mesure en Seine-Maritime!</h1>
+
+                    <p class="mt-6 backdrop-blur-sm rounded-xl">Découvrez Internet Autrement avec Nous : Votre Opérateur et Intégrateur Local en Seine-Maritime, Fier d'Offrir des Solutions Internet de Proximité Adaptées à vos Besoins!</p>
+
+                    <a class="btn btn-white mt-8" href="#">
+                        Contactez-nous
+                    </a>
+                </div>
+                <div class="lg:col-6 ">
+                    <img
+                        class="object-contain"
+                        alt="SeineConnect bannière"
+                        width="640"
+                        height="426"
+                        src="{{ asset('build/app/shop/images/banner-img.webp') }}"
+                        loading="eager"
+                        decoding="async"
+                    >
+                </div>
+            </div>
+        </div>
+    </section>
     <div class="homepage">
         <div class="ui hidden divider"></div>
 
