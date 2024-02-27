@@ -2,3 +2,4 @@
 import './style.scss'
 
 import './js/header.js'
+import '../bootstrap'

@@ -66,6 +66,7 @@ Encore
     .cleanupOutputBeforeBuild()
     .enableSourceMaps(!Encore.isProduction())
     .enableVersioning(Encore.isProduction())
+    .enableStimulusBridge('./assets/controllers.json')
     .enablePostCssLoader((options) => {
       options.postcssOptions = {
         config: './postcss.config.js'
