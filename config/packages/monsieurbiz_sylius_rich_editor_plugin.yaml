@@ -6,3 +6,13 @@ monsieurbiz_sylius_richeditor:
         monsieurbiz.text:
             classes:
                 form: App\Form\Extension\MonsieurBizRichEditorPlugin\TextTypeExtension
+        app.header:
+            title: "app.ui.elements.header.title"
+            description: "app.ui.elements.header.description"
+            icon: "test"
+            classes:
+                form: App\Form\Type\UiElement\HeaderType
+            templates:
+                admin_render: "/UiElement/Admin/header.html.twig"
+                front_render: "/UiElement/Admin/header.html.twig"
+            tags: []

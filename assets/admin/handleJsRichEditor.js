@@ -19,12 +19,19 @@ document.addEventListener('monsieurBizRichEditorInitForm', (e) => {
       scripts.push(script);
     }
   })
-  form.appendChild(sourcedScript);
-  sourcedScript.addEventListener('load', function() {
+  console.log(sourcedScript);
+  if (sourcedScript === undefined) {
     scripts.forEach(script => {
       form.appendChild(script);
     });
-  });
+  } else {
+    form.appendChild(sourcedScript);
+    sourcedScript.addEventListener('load', function() {
+      scripts.forEach(script => {
+        form.appendChild(script);
+      });
+    });
+  }
 });
 var editorManagers = [];
 document.addEventListener('mbiz:rich-editor:init-interface-complete', (e) => {

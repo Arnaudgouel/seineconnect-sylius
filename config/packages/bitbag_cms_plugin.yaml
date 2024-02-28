@@ -4,3 +4,4 @@ imports:
 twig:
     form_themes:
         - '@BitBagSyliusCmsPlugin/Form/ckeditor_widget.html.twig'
+        - '@BitBagSyliusCmsPlugin/Form/theme.html.twig'

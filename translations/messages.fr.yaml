@@ -1,0 +1,6 @@
+app:
+    ui:
+        subtitle: "Sous-titre"
+        image_position: "Position de l'image"
+        button_text: "Texte du bouton"
+        button_url: "URL du bouton"
