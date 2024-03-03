@@ -100,6 +100,7 @@ Encore
     .cleanupOutputBeforeBuild()
     .enableSourceMaps(!Encore.isProduction())
     .enableVersioning(Encore.isProduction())
+    .enableStimulusBridge('./assets/controllers.json')
     .enableSassLoader();
 
 const appAdminConfig = Encore.getWebpackConfig();

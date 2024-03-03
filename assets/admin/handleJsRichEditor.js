@@ -19,7 +19,6 @@ document.addEventListener('monsieurBizRichEditorInitForm', (e) => {
       scripts.push(script);
     }
   })
-  console.log(sourcedScript);
   if (sourcedScript === undefined) {
     scripts.forEach(script => {
       form.appendChild(script);

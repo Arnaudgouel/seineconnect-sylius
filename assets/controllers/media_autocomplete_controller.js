@@ -5,6 +5,7 @@ import { HandleAutoComplete } from '../../vendor/bitbag/cms-plugin/src/Resources
 export default class extends Controller {
 
   connect() {
+    console.log('test')
     $('.bitbag-media-autocomplete.ui.dropdown').dropdown();
     if (document.querySelector('[data-bb-target="cms-handle-autocomplete"]')) {
       const handleAutoCompleteInstance = new HandleAutoComplete();

@@ -78,6 +78,8 @@ VOLUME /srv/sylius/var
 
 VOLUME /srv/sylius/public/media
 
+RUN chmod +w -R /srv/sylius/public
+
 COPY docker/php/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
 RUN chmod +x /usr/local/bin/docker-entrypoint
 
